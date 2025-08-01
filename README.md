@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+# React Transfer List Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a modern, responsive, and reusable **Transfer List** component built with React, TypeScript, and Tailwind CSS. It demonstrates a feature-based architecture and best practices for creating scalable and maintainable React components.
 
-Currently, two official plugins are available:
+The component allows users to move items between two lists, a common UI pattern found in settings panels, configuration screens, and permission management systems.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+<!-- *(Note: You can replace this with a real screenshot or GIF of your component in action.)* -->
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Table of Contents
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- [Real-World Use Case](#real-world-use-case)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Development Server](#running-the-development-server)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Real-World Use Case
+
+To make the component practical, it is implemented within a real-world scenario: **User Role Permission Management**.
+
+An administrator needs to assign specific permissions to a user role (e.g., "Editor"). The Transfer List provides an intuitive interface for this task:
+*   **Left List ("Available Permissions"):** Shows all permissions that are not yet assigned to the role.
+*   **Right List ("Assigned Permissions"):** Shows all permissions currently granted to the role.
+
+The administrator can easily move permissions between the lists to configure the role.
+
+## Features
+
+*   **Move Selected Items:** Select one or more items and move them to the opposite list.
+*   **Move All Items:** Instantly move all items from one list to the other.
+*   **Responsive Design:** The layout automatically adjusts for a seamless experience on both desktop and mobile devices. On mobile, lists are stacked vertically with intuitive up/down controls.
+*   **Clean & Reusable:** Built with a feature-based architecture, making it easy to integrate into any React project.
+*   **State Encapsulation:** All complex state logic is managed within a custom hook, keeping the UI component clean.
+
+## Tech Stack
+
+*   **React
+*   **TypeScript
+*   **Tailwind CSS
+
+## Project Structure
+
+This project follows a **feature-based architecture**. All files related to the `TransferList` component are co-located, making the feature self-contained and easy to manage.
+
+```
+src/
+├── components/
+│   └── ui/             
+│       ├── Icon.tsx
+│       └── index.ts
+├── data/
+│   └── permissionService.ts 
+├── features/
+│   └── TransferList/     
+│       ├── components/     
+│       │   ├── ControlButton.tsx
+│       │   └── ListItem.tsx
+│       ├── hooks/         
+│       │   └── useTransferList.ts
+│       ├── TransferList.tsx  
+│       ├── types.ts       
+│       └── index.ts        
+└── App.tsx                 
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Follow these instructions to get the project up and running on your local machine.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+*   [Node.js](https://nodejs.org/en/) (v16 or later recommended)
+*   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/eeyll18/transfer-list.git
+    ```
+
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+    or
+    ```bash
+    yarn install
+    ```
+
+### Running the Development Server
+
+Start the Vite development server:
+
+```bash
+npm run dev
 ```
+
+The application will be available at `http://localhost:5173`.
